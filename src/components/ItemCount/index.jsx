@@ -1,9 +1,9 @@
 import './itemCount.css';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const ItemCount = ({ initial, stock, onAdd }) => {
-    const [count, setCount] = useState(initial);
+    const [count, setCount] = useState(parseInt(initial));
 
     const decrease = () => {
         setCount(count - 1);
@@ -12,6 +12,11 @@ export const ItemCount = ({ initial, stock, onAdd }) => {
     const increase = () => {
         setCount(count + 1);
     }
+
+    useEffect(() => {
+        setCount(parseInt(initial));
+        
+    }, [initial])
 
     return (
         <div className='counter'>
